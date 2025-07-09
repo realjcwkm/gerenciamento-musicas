@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.playlist.MainController">
+
+    <left>
+        <VBox alignment="CENTER" spacing="20" styleClass="sidebar">
+            <VBox.margin>
+                <Insets bottom="20" left="20" right="20" top="30" />
+            </VBox.margin>
+
+            <ImageView fx:id="imgUsuario" fitHeight="60" fitWidth="60" />
+
+            <Button fx:id="btnUsuario" styleClass="menu-button" text="Usuário" />
+            <Button fx:id="btnInicio" styleClass="menu-button" text="Início" />
+            <Button fx:id="btnBiblioteca" styleClass="menu-button" text="Biblioteca" />
+            <Button fx:id="btnEstatisticas" styleClass="menu-button" text="Estatísticas" />
+            <Button fx:id="btnConfiguracoes" styleClass="menu-button" text="Configurações" />
+            <Button fx:id="btnSair" onAction="#handleSair" styleClass="exit-button" text="Sair" />
+
+            <padding>
+                <Insets bottom="25" left="30" right="25" top="25" />
+            </padding>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            <Label styleClass="title" text="Biblioteca de Músicas" />
+            <ListView fx:id="listaMusicas" styleClass="music-list" VBox.vgrow="ALWAYS" />
+        </VBox>
+    </center>
+
+    <right>
+        <VBox alignment="CENTER" spacing="25.0" styleClass="player">
+            <ImageView fx:id="imgCapa" fitHeight="150" fitWidth="150" preserveRatio="true" />
+            <Label fx:id="lblTitulo" styleClass="music-title" text="Título da música" />
+            <Label fx:id="lblArtista" styleClass="music-artist" text="Artista" />
+            <HBox alignment="CENTER" minWidth="-Infinity" spacing="10">
+                <Button fx:id="btnVoltar" text="⏮" />
+                <Button fx:id="btnPlay" text="▶" />
+                <Button fx:id="btnProxima" text="⏭" />
+            </HBox>
+         <padding>
+            <Insets bottom="25.0" left="30.0" right="25.0" top="25.0" />
+         </padding>
+        </VBox>
+    </right>
+
+</BorderPane>
