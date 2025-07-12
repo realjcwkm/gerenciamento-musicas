@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch GerenciadorDeMusicas",
+            "request": "launch",
+            "mainClass": "com.gerenciamentomusicas.Main",
+            "projectName": "GerenciadorDeMúsicas",
+            "cwd": "${workspaceFolder}",
+            "classpath": [
+                "${workspaceFolder}/GerenciadorDeMúsicas/bin",
+                "${workspaceFolder}/GerenciadorDeMúsicas/src/main/resources"
+            ],
+            "vmArgs": "-XX:+ShowCodeDetailsInExceptionMessages"
+        }
+    ]
+}
