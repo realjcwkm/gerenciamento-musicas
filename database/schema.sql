@@ -1,3 +1,8 @@
+-- -----------------------------------------------------
+-- Tabela: usuarios
+-- Descrição: Armazena os dados de cada usuário cadastrado
+-- que pode criar playlists e interagir com o sistema.
+-- -----------------------------------------------------
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -6,6 +11,11 @@ CREATE TABLE usuarios (
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- -----------------------------------------------------
+-- Tabela: musicas
+-- Descrição: Catálogo central de todas as músicas disponíveis
+-- no sistema, com seus metadados.
+-- -----------------------------------------------------
 CREATE TABLE musicas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
@@ -15,6 +25,11 @@ CREATE TABLE musicas (
     caminho_arquivo VARCHAR(255)
 );
 
+-- -----------------------------------------------------
+-- Tabela: playlists
+-- Descrição: Armazena as playlists criadas pelos usuários.
+-- Cada playlist pertence a um único usuário.
+-- -----------------------------------------------------
 CREATE TABLE playlists (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -23,6 +38,11 @@ CREATE TABLE playlists (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
+-- -----------------------------------------------------
+-- Tabela: musicas_playlists
+-- Descrição: Tabela de associação (N:M) que liga as músicas
+-- às playlists, definindo a ordem de cada música.
+-- -----------------------------------------------------
 CREATE TABLE musicas_playlists (
     playlist_id INT NOT NULL,
     musica_id INT NOT NULL,
