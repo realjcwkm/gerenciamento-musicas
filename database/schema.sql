@@ -20,7 +20,7 @@ CREATE TABLE musicas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
     artista VARCHAR(100) NOT NULL,
-    duracao INT,
+    duracao INT CHECK (duracao > 0),
     genero VARCHAR(50),
     caminho_arquivo VARCHAR(255)
 );
@@ -46,7 +46,7 @@ CREATE TABLE playlists (
 CREATE TABLE musicas_playlists (
     playlist_id INT NOT NULL,
     musica_id INT NOT NULL,
-    ordem INT,
+    ordem INT CHECK (ordem >= 1),
     PRIMARY KEY (playlist_id, musica_id),
     FOREIGN KEY (playlist_id) REFERENCES playlists(id),
     FOREIGN KEY (musica_id) REFERENCES musicas(id)
