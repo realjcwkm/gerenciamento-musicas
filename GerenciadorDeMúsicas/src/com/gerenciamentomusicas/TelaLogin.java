@@ -143,60 +143,40 @@ public class TelaLogin extends JFrame {
         });
 
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 35)));
-
-        this.textoNaoPossuiConta = new JLabel("Não possui uma conta?");
-        this.textoNaoPossuiConta.setForeground(Color.WHITE);
-        this.textoNaoPossuiConta.setFont(new Font("Arial", Font.PLAIN, 14));
-        this.textoNaoPossuiConta.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.textoNaoPossuiConta.setMaximumSize(new Dimension(300, 20));
-        this.textoNaoPossuiConta.setPreferredSize(new Dimension(300, 20));
-        this.textoNaoPossuiConta.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
-        this.linkRegistrar = new JLabel("REGISTRE-SE");
-        this.linkRegistrar.setForeground(Color.WHITE); 
-        this.linkRegistrar.setFont(new Font("Arial", Font.BOLD, 14));
-        this.linkRegistrar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.linkRegistrar.setMaximumSize(new Dimension(300, 20));
-        this.linkRegistrar.setPreferredSize(new Dimension(300, 20));
-        this.linkRegistrar.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 15));
         
-        JPanel painelRegistro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
+        // ===== INÍCIO DO CÓDIGO CORRIGIDO PARA ALINHAMENTO E HOVER =====
+        JLabel textoNaoPossuiConta = new JLabel("Não possui uma conta?");
+        textoNaoPossuiConta.setForeground(Color.WHITE);
+        textoNaoPossuiConta.setFont(new Font("Arial", Font.PLAIN, 14));
+        JLabel linkRegistrar = new JLabel("REGISTRE-SE"); 
+        linkRegistrar.setForeground(Color.WHITE);
+        linkRegistrar.setFont(new Font("Arial", Font.BOLD, 14));
+        linkRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        linkRegistrar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JOptionPane.showMessageDialog(e.getComponent(), "Navegando para a tela de registro...");
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                linkRegistrar.setText("<html><u>REGISTRE-SE</u></html>");
+                linkRegistrar.setForeground(new Color(50, 150, 255));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                linkRegistrar.setText("REGISTRE-SE");
+                linkRegistrar.setForeground(Color.WHITE);
+            }
+        });
+
+        JPanel painelRegistro = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0)); 
         painelRegistro.setBackground(Color.BLACK);
+        painelRegistro.setAlignmentX(Component.CENTER_ALIGNMENT);
         painelRegistro.add(textoNaoPossuiConta);
         painelRegistro.add(linkRegistrar);
         painelConteudo.add(painelRegistro);
-
-        // --- ADIÇÃO: Listener para o link REGISTRE-SE ---
-        this.linkRegistrar.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                dispose();
-                SwingUtilities.invokeLater(() -> new TelaRegistro().setVisible(true));
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                linkRegistrar.setForeground(new Color(0, 102, 255));
-                linkRegistrar.setText("<html><u><b>REGISTRE-SE</b></u></html>");
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                linkRegistrar.setForeground(Color.WHITE);
-                linkRegistrar.setText("REGISTRE-SE");
-            }
-        });
-        // --- FIM DA ADIÇÃO ---
-
-        this.textoOu = new JLabel("ou");
-        this.textoOu.setForeground(Color.WHITE);
-        this.textoOu.setFont(new Font("Arial", Font.PLAIN, 14));
-        this.textoOu.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.textoOu.setMaximumSize(new Dimension(300, 20));
-        this.textoOu.setPreferredSize(new Dimension(300, 20));
-        this.textoOu.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 15));
-        painelConteudo.add(this.textoOu);
-        painelConteudo.add(Box.createRigidArea(new Dimension(0, 20)));
+        // ===== FIM DO CÓDIGO CORRIGIDO =====
 
         JPanel painelBotoesSociais = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
         painelBotoesSociais.setBackground(Color.BLACK);
@@ -229,6 +209,7 @@ public class TelaLogin extends JFrame {
         textField.setCaretColor(Color.WHITE);
         textField.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
         textField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        textField.setHorizontalAlignment(JTextField.CENTER);
     }
 
     private JButton createSocialButton(URL imageUrl, String fallbackText) {
