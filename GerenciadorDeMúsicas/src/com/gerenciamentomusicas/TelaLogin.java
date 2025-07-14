@@ -150,8 +150,7 @@ public class TelaLogin extends JFrame {
         this.textoNaoPossuiConta.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.textoNaoPossuiConta.setMaximumSize(new Dimension(300, 20));
         this.textoNaoPossuiConta.setPreferredSize(new Dimension(300, 20));
-        this.textoNaoPossuiConta.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 15));
-        painelConteudo.add(this.textoNaoPossuiConta);
+        this.textoNaoPossuiConta.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         this.linkRegistrar = new JLabel("<html><u>REGISTRE-SE</u></html>");
         this.linkRegistrar.setForeground(new Color(0, 102, 255));
@@ -160,8 +159,12 @@ public class TelaLogin extends JFrame {
         this.linkRegistrar.setMaximumSize(new Dimension(300, 20));
         this.linkRegistrar.setPreferredSize(new Dimension(300, 20));
         this.linkRegistrar.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 15));
-        painelConteudo.add(this.linkRegistrar);
-        painelConteudo.add(Box.createRigidArea(new Dimension(0, 25)));
+        
+        JPanel painelRegistro = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
+        painelRegistro.setBackground(Color.BLACK);
+        painelRegistro.add(textoNaoPossuiConta);
+        painelRegistro.add(linkRegistrar);
+        painelConteudo.add(painelRegistro);
 
         // --- ADIÇÃO: Listener para o link REGISTRE-SE ---
         this.linkRegistrar.addMouseListener(new MouseAdapter() {
