@@ -1,14 +1,20 @@
 package dao;
+
 import model.Usuario;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UsuarioDAO {
-    public Usuario autenticar(String email, String senha) throws SQLException {
-        String sql = "SELECT * FROM usuarios WHERE email = ? AND senha_hash = ?";
+
+    public Usuario autenticar(String loginOuEmail, String senha) throws SQLException {
+        String sql = "SELECT * FROM usuarios WHERE (email = ? OR nome = ?) AND senha_hash = ?";
         try (Connection conn = Conexao.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, email);
-            stmt.setString(2, senha);
+            stmt.setString(1, loginOuEmail);
+            stmt.setString(2, loginOuEmail);
+            stmt.setString(3, senha);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     Usuario usuario = new Usuario();
@@ -21,36 +27,16 @@ public class UsuarioDAO {
         }
         return null;
     }
-    
-    /**
-     * Atualiza os dados de um usuário existente no banco.
-     * @param usuario O objeto   Usuario com o ID e os novos dados.
-     * @throws SQLException Se ocorrer um erro de SQL.
-     */
-    public void atualizar(Usuario usuario) throws SQLException {
-        String sql = "UPDATE usuarios SET nome = ?, email = ?, senha_hash = ? WHERE id = ?";
+
+    public void cadastrar(Usuario novoUsuario) throws SQLException {
+        String sql = "INSERT INTO usuarios (nome, email, senha_hash) VALUES (?, ?, ?)";
         try (Connection conn = Conexao.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, usuario.getNome());
-            stmt.setString(2, usuario.getEmail());
-            stmt.setString(3, usuario.getSenhaHash());
-            stmt.setInt(4, usuario.getId());
+            stmt.setString(1, novoUsuario.getNome());
+            stmt.setString(2, novoUsuario.getEmail());
+            stmt.setString(3, novoUsuario.getSenhaHash()); 
 
-            stmt.executeUpdate();
-        }
-    }
-    /**
-     * Exclui um usuário do banco de dados com base no seu ID.
-     * @param id O ID do usuário a ser excluído.
-     * @throws SQLException Se ocorrer um erro de SQL.
-     */
-    public void excluir(int id) throws SQLException {
-        String sql = "DELETE FROM usuarios WHERE id = ?";
-        try (Connection conn = Conexao.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, id);
             stmt.executeUpdate();
         }
     }
