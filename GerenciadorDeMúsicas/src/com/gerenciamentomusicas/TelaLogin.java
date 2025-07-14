@@ -142,14 +142,6 @@ public class TelaLogin extends JFrame {
             }
         });
 
-        this.linkRecuperarSenha = new JLabel("<html><u>Recuperar senha</u></html>");
-        this.linkRecuperarSenha.setForeground(new Color(0, 102, 255));
-        this.linkRecuperarSenha.setFont(new Font("Arial", Font.PLAIN, 14));
-        this.linkRecuperarSenha.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.linkRecuperarSenha.setMaximumSize(new Dimension(300, 20));
-        this.linkRecuperarSenha.setPreferredSize(new Dimension(300, 20));
-        this.linkRecuperarSenha.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 15));
-        painelConteudo.add(this.linkRecuperarSenha);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 35)));
 
         this.textoNaoPossuiConta = new JLabel("Não possui uma conta?");
