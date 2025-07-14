@@ -27,6 +27,9 @@ import com.gerenciamentomusicas.view.components.RoundJPasswordField;
 import com.gerenciamentomusicas.view.components.RoundJTextField;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import dao.UsuarioDAO;
+import model.Usuario;
+import javax.swing.JOptionPane;
 
 // Importa a TelaLogin, pois TelaRegistro vai abri-la para voltar
 import com.gerenciamentomusicas.TelaLogin;
@@ -121,6 +124,43 @@ public class TelaRegistro extends JFrame {
         this.botaoRegistrar.setFocusPainted(false);
         this.botaoRegistrar.setAlignmentX(Component.CENTER_ALIGNMENT);
         painelConteudo.add(this.botaoRegistrar);
+        
+        // --- INÍCIO DA LÓGICA DO BOTÃO REGISTRAR ---
+        this.botaoRegistrar.addActionListener(e -> {
+            String nome = campoNomeUsuario.getText();
+            String email = campoEmail.getText();
+            String senha = new String(campoSenha.getPassword());
+            String confirmarSenha = new String(campoConfirmarSenha.getPassword());
+
+            if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || nome.equals("NOME DE USUÁRIO") || email.equals("E-MAIL")) {
+                JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos.", "Erro de Validação", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (!senha.equals(confirmarSenha)) {
+                JOptionPane.showMessageDialog(this, "As senhas digitadas não coincidem. Tente novamente.", "Erro de Senha", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Usuario novoUsuario = new Usuario();
+            novoUsuario.setNome(nome);
+            novoUsuario.setEmail(email);
+            novoUsuario.setSenhaHash(senha);
+
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            try {
+                usuarioDAO.cadastrar(novoUsuario);
+                JOptionPane.showMessageDialog(this, "Usuário '" + nome + "' cadastrado com sucesso!\nFaça o login para continuar.", "Cadastro Realizado", JOptionPane.INFORMATION_MESSAGE);
+                new TelaLogin().setVisible(true);
+                this.dispose();
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Erro ao cadastrar usuário.\nO e-mail já pode estar em uso.", "Erro no Banco de Dados", JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
+        });
+        // --- FIM DA LÓGICA DO BOTÃO ---
+
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 10)));
 
         // ==========
