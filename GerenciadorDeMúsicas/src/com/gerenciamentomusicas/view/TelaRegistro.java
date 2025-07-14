@@ -123,29 +123,36 @@ public class TelaRegistro extends JFrame {
         painelConteudo.add(this.botaoRegistrar);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        // --- ADIÇÃO: Link "Voltar para Login" ---
-        JLabel linkVoltarLogin = new JLabel("<html><u>Voltar para Login</u></html>");
-        linkVoltarLogin.setForeground(new Color(0, 102, 255));
-        linkVoltarLogin.setFont(new Font("Arial", Font.PLAIN, 14));
-        linkVoltarLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
-        linkVoltarLogin.setMaximumSize(new Dimension(300, 20));
-        linkVoltarLogin.setPreferredSize(new Dimension(300, 20));
-        linkVoltarLogin.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 15));
-        painelConteudo.add(linkVoltarLogin);
-        painelConteudo.add(Box.createRigidArea(new Dimension(0, 10))); // Espaço após o link
+        JLabel linkVoltarLogin = new JLabel("Voltar para Login");
+        linkVoltarLogin.setForeground(Color.WHITE);
+        linkVoltarLogin.setFont(new Font("Arial", Font.BOLD, 14));
+        linkVoltarLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         linkVoltarLogin.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Fecha a tela de registro atual
                 dispose();
-                // Abre a tela de login
-                SwingUtilities.invokeLater(() -> {
-                    new TelaLogin();
-                });
+                new TelaLogin().setVisible(true);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                linkVoltarLogin.setText("<html><u>Voltar para Login</u></html>");
+                linkVoltarLogin.setForeground(new Color(50, 150, 255));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                linkVoltarLogin.setText("Voltar para Login");
+                linkVoltarLogin.setForeground(Color.WHITE);
             }
         });
-        // --- FIM DA ADIÇÃO ---
+
+        JPanel painelVoltar = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        painelVoltar.setBackground(Color.BLACK); // Fundo invisível
+        painelVoltar.setAlignmentX(Component.CENTER_ALIGNMENT);
+        painelVoltar.add(linkVoltarLogin);
+        painelConteudo.add(painelVoltar);
 
         this.setVisible(true);
     }
