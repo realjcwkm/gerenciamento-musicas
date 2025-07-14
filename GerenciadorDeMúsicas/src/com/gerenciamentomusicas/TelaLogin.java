@@ -133,8 +133,23 @@ public class TelaLogin extends JFrame {
                 Usuario usuarioAutenticado = usuarioDAO.autenticar(login, senha);
 
                 if (usuarioAutenticado != null) {
-                    JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo, " + usuarioAutenticado.getNome() + ".");
-                    this.dispose();
+                    String mensagemCompleta = "<html>"
+                            + "Login realizado com sucesso! Bem-vindo, <b>" + usuarioAutenticado.getNome() + "</b>.<br><br>"
+                            + "A parte de Autenticação (em Java Swing) foi concluída.<br><br>"
+                            + "<hr>" // Adiciona uma linha divisória
+                            + "<b>Próximo Passo:</b><br>"
+                            + "Para testar o restante da aplicação (em JavaFX), por favor, siga<br>"
+                            + "as instruções no arquivo <b>README.md</b>."
+                            + "</html>";
+
+                    JOptionPane.showMessageDialog(
+                        this, 
+                        mensagemCompleta, 
+                        "Módulo Concluído - Próximos Passos", 
+                        JOptionPane.INFORMATION_MESSAGE
+                    );
+
+                    System.exit(0);
                 } else {
                     JOptionPane.showMessageDialog(this, "E-mail ou senha incorretos.", "Falha na Autenticação", JOptionPane.ERROR_MESSAGE);
                 }
