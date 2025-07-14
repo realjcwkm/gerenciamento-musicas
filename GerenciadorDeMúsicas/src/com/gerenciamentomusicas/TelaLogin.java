@@ -152,8 +152,8 @@ public class TelaLogin extends JFrame {
         this.textoNaoPossuiConta.setPreferredSize(new Dimension(300, 20));
         this.textoNaoPossuiConta.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        this.linkRegistrar = new JLabel("<html><u>REGISTRE-SE</u></html>");
-        this.linkRegistrar.setForeground(new Color(0, 102, 255));
+        this.linkRegistrar = new JLabel("REGISTRE-SE");
+        this.linkRegistrar.setForeground(Color.WHITE); 
         this.linkRegistrar.setFont(new Font("Arial", Font.BOLD, 14));
         this.linkRegistrar.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.linkRegistrar.setMaximumSize(new Dimension(300, 20));
@@ -170,12 +170,20 @@ public class TelaLogin extends JFrame {
         this.linkRegistrar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Fecha a tela de login atual
                 dispose();
-                // Abre a tela de registro
-                SwingUtilities.invokeLater(() -> {
-                    new TelaRegistro();
-                });
+                SwingUtilities.invokeLater(() -> new TelaRegistro().setVisible(true));
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                linkRegistrar.setForeground(new Color(0, 102, 255));
+                linkRegistrar.setText("<html><u><b>REGISTRE-SE</b></u></html>");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                linkRegistrar.setForeground(Color.WHITE);
+                linkRegistrar.setText("REGISTRE-SE");
             }
         });
         // --- FIM DA ADIÇÃO ---
