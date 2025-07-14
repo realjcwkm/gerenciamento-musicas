@@ -25,15 +25,17 @@ import javax.swing.SwingUtilities;
 
 // Importa a TelaLogin, pois TelaRegistro vai abri-la para voltar
 import com.gerenciamentomusicas.TelaLogin;
+import com.gerenciamentomusicas.view.components.RoundJPasswordField;
+import com.gerenciamentomusicas.view.components.RoundJTextField;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class TelaRegistro extends JFrame {
     private JLabel labelIconeMusica;
-    private JTextField campoNomeUsuario;
-    private JTextField campoEmail;
-    private JPasswordField campoSenha;
-    private JPasswordField campoConfirmarSenha;
+    private RoundJTextField campoNomeUsuario;
+    private RoundJTextField campoEmail;
+    private RoundJPasswordField campoSenha;
+    private RoundJPasswordField campoConfirmarSenha;
     private JButton botaoRegistrar;
 
     public TelaRegistro() {
