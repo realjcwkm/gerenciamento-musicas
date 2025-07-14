@@ -157,7 +157,9 @@ public class TelaLogin extends JFrame {
         linkRegistrar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                JOptionPane.showMessageDialog(e.getComponent(), "Navegando para a tela de registro...");
+                TelaRegistro telaDeRegistro = new TelaRegistro();
+                telaDeRegistro.setVisible(true);
+                dispose(); 
             }
             @Override
             public void mouseEntered(MouseEvent e) {
