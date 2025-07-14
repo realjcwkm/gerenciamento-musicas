@@ -40,4 +40,18 @@ public class UsuarioDAO {
             stmt.executeUpdate();
         }
     }
+    /**
+     * Exclui um usuário do banco de dados com base no seu ID.
+     * @param id O ID do usuário a ser excluído.
+     * @throws SQLException Se ocorrer um erro de SQL.
+     */
+    public void excluir(int id) throws SQLException {
+        String sql = "DELETE FROM usuarios WHERE id = ?";
+        try (Connection conn = Conexao.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
+    }
 }
