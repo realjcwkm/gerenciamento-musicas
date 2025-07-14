@@ -81,15 +81,15 @@ public class TelaLogin extends JFrame {
         painelConteudo.add(this.labelIconeMusica);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 30)));
 
-        this.campoUsuarioEmail = new JTextField("NOME DE USUÁRIO OU E-MAIL");
+        this.campoUsuarioEmail = new JTextField();
         setupTextField(this.campoUsuarioEmail);
+        addPlaceholder(this.campoUsuarioEmail, "NOME DE USUÁRIO OU E-MAIL");
         painelConteudo.add(this.campoUsuarioEmail);
-        painelConteudo.add(Box.createRigidArea(new Dimension(0, 15)));
 
-        this.campoSenha = new JPasswordField("SENHA");
+        this.campoSenha = new JPasswordField();
         setupTextField(this.campoSenha);
+        addPlaceholder(this.campoSenha, "SENHA");
         painelConteudo.add(this.campoSenha);
-        painelConteudo.add(Box.createRigidArea(new Dimension(0, 25)));
 
         this.botaoLogin = new JButton("LOGIN");
         this.botaoLogin.setMaximumSize(new Dimension(300, 50));
