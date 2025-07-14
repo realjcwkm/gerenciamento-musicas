@@ -31,3 +31,20 @@ CREATE TABLE musicas_playlists (
     FOREIGN KEY (playlist_id) REFERENCES playlists(id),
     FOREIGN KEY (musica_id) REFERENCES musicas(id)
 );
+
+-- =====================================================
+-- VIEW para Relatório
+-- Visão que combina dados de usuários, playlists e músicas
+-- para gerar um relatório completo.
+-- =====================================================
+CREATE OR REPLACE VIEW `relatorio_completo_playlists` AS
+SELECT
+    u.nome AS 'Dono_da_Playlist',
+    p.nome AS 'Nome_da_Playlist',
+    m.titulo AS 'Musica',
+    m.artista AS 'Artista'
+FROM musicas_playlists mp
+JOIN musicas m ON mp.musica_id = m.id
+JOIN playlists p ON mp.playlist_id = p.id
+JOIN usuarios u ON p.usuario_id = u.id
+ORDER BY u.nome, p.nome, mp.ordem;
