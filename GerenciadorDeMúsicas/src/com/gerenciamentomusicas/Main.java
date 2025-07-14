@@ -1,13 +1,15 @@
-package com.gerenciamentomusicas;
+package com.gerenciamentomusicas; // Declara o pacote para Main.java
 
 import javax.swing.SwingUtilities;
-import com.gerenciamentomusicas.TelaLogin; // Importa a TelaLogin do mesmo pacote
 
 public class Main {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            TelaLogin telaLogin = new TelaLogin();
-            telaLogin.setVisible(true);
+        // Garante que a interface gráfica seja inicializada na Event Dispatch Thread (EDT)
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new TelaLogin(); // Cria e exibe a TelaLogin
+            }
         });
     }
 }
