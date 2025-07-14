@@ -22,6 +22,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import dao.UsuarioDAO;
+import model.Usuario;
+import javax.swing.JOptionPane;
 
 // Importa a TelaRegistro, pois TelaLogin vai abri-la
 import com.gerenciamentomusicas.view.TelaRegistro;
@@ -99,6 +102,31 @@ public class TelaLogin extends JFrame {
         this.botaoLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
         painelConteudo.add(this.botaoLogin);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 20)));
+        // --- CÓDIGO PARA ADICIONAR A LÓGICA DE LOGIN ---
+        this.botaoLogin.addActionListener(e -> {
+            String email = campoUsuarioEmail.getText();
+            String senha = new String(campoSenha.getPassword());
+
+            // Validação simples
+            if (email.isEmpty() || senha.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, preencha os campos de e-mail e senha.", "Campos Vazios", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            try {
+                Usuario usuarioAutenticado = usuarioDAO.autenticar(email, senha);
+
+                if (usuarioAutenticado != null) {
+                    JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo, " + usuarioAutenticado.getNome() + ".");
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "E-mail ou senha incorretos.", "Falha na Autenticação", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Erro ao conectar com o banco de dados.", "Erro de Conexão", JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
+        });
 
         this.linkRecuperarSenha = new JLabel("<html><u>Recuperar senha</u></html>");
         this.linkRecuperarSenha.setForeground(new Color(0, 102, 255));
