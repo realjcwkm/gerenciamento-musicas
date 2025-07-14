@@ -25,6 +25,8 @@ import javax.swing.SwingUtilities;
 import dao.UsuarioDAO;
 import model.Usuario;
 import javax.swing.JOptionPane;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 // Importa a TelaRegistro, pois TelaLogin vai abri-la
 import com.gerenciamentomusicas.view.TelaRegistro;
@@ -230,5 +232,71 @@ public class TelaLogin extends JFrame {
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         return button;
+    }
+    
+    /**
+     * Adiciona um texto de placeholder a um JTextField.
+     * O texto some quando o campo ganha foco e reaparece se o campo ficar vazio.
+     * @param textField O campo de texto a ser modificado.
+     * @param placeholder O texto de ajuda a ser exibido.
+     */
+    private void addPlaceholder(JTextField textField, String placeholder) {
+        Color originalColor = textField.getForeground();
+        Color placeholderColor = Color.GRAY;
+
+        textField.setText(placeholder);
+        textField.setForeground(placeholderColor);
+
+        textField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (textField.getText().equals(placeholder)) {
+                    textField.setText("");
+                    textField.setForeground(originalColor);
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (textField.getText().isEmpty()) {
+                    textField.setText(placeholder);
+                    textField.setForeground(placeholderColor);
+                }
+            }
+        });
+    }
+
+    /**
+     * Versão especial do addPlaceholder para JPasswordField, que lida com os caracteres de senha.
+     * @param passwordField O campo de senha a ser modificado.
+     * @param placeholder O texto de ajuda a ser exibido.
+     */
+    private void addPlaceholder(JPasswordField passwordField, String placeholder) {
+        Color originalColor = passwordField.getForeground();
+        Color placeholderColor = Color.GRAY;
+        char defaultEchoChar = passwordField.getEchoChar();
+
+        // Estado inicial
+        passwordField.setText(placeholder);
+        passwordField.setForeground(placeholderColor);
+        passwordField.setEchoChar((char) 0);
+
+        passwordField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (new String(passwordField.getPassword()).equals(placeholder)) {
+                    passwordField.setText("");
+                    passwordField.setForeground(originalColor);
+                    passwordField.setEchoChar(defaultEchoChar);
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (new String(passwordField.getPassword()).isEmpty()) {
+                    passwordField.setForeground(placeholderColor);
+                    passwordField.setText(placeholder);
+                    passwordField.setEchoChar((char) 0);
+                }
+            }
+        });
     }
 }
