@@ -22,13 +22,14 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-
-// Importa a TelaLogin, pois TelaRegistro vai abri-la para voltar
-import com.gerenciamentomusicas.TelaLogin;
+import com.gerenciamentomusicas.view.components.RoundJButton;
 import com.gerenciamentomusicas.view.components.RoundJPasswordField;
 import com.gerenciamentomusicas.view.components.RoundJTextField;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+
+// Importa a TelaLogin, pois TelaRegistro vai abri-la para voltar
+import com.gerenciamentomusicas.TelaLogin;
 
 public class TelaRegistro extends JFrame {
     private JLabel labelIconeMusica;
@@ -36,7 +37,7 @@ public class TelaRegistro extends JFrame {
     private RoundJTextField campoEmail;
     private RoundJPasswordField campoSenha;
     private RoundJPasswordField campoConfirmarSenha;
-    private JButton botaoRegistrar;
+    private RoundJButton botaoRegistrar;
 
     public TelaRegistro() {
         this.setTitle("Registro");
@@ -77,31 +78,31 @@ public class TelaRegistro extends JFrame {
         painelConteudo.add(this.labelIconeMusica);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 30)));
 
-        this.campoNomeUsuario = new JTextField();
+        this.campoNomeUsuario = new RoundJTextField();
         addPlaceholder(this.campoNomeUsuario, "NOME DE USUÁRIO");
         setupTextField(this.campoNomeUsuario);
         painelConteudo.add(this.campoNomeUsuario);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 15)));
 
-        this.campoEmail = new JTextField();
+        this.campoEmail = new RoundJTextField();
         addPlaceholder(this.campoEmail, "E-MAIL");
         setupTextField(this.campoEmail);
         painelConteudo.add(this.campoEmail);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 15)));
 
-        this.campoSenha = new JPasswordField();
+        this.campoSenha = new RoundJPasswordField();
         addPlaceholder(this.campoSenha, "SENHA");
         setupTextField(this.campoSenha);
         painelConteudo.add(this.campoSenha);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 15)));
 
-        this.campoConfirmarSenha = new JPasswordField();
+        this.campoConfirmarSenha = new RoundJPasswordField();
         addPlaceholder(this.campoConfirmarSenha, "CONFIRMAR SENHA");
         setupTextField(this.campoConfirmarSenha);
         painelConteudo.add(this.campoConfirmarSenha);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 25)));
 
-        this.botaoRegistrar = new JButton("REGISTRAR");
+        this.botaoRegistrar = new RoundJButton("REGISTRAR");
         this.botaoRegistrar.setMaximumSize(new Dimension(300, 50));
         this.botaoRegistrar.setPreferredSize(new Dimension(300, 50));
         this.botaoRegistrar.setBackground(new Color(0, 102, 255));
