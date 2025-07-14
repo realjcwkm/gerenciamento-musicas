@@ -121,11 +121,12 @@ public class TelaRegistro extends JFrame {
         this.botaoRegistrar.setFocusPainted(false);
         this.botaoRegistrar.setAlignmentX(Component.CENTER_ALIGNMENT);
         painelConteudo.add(this.botaoRegistrar);
-        painelConteudo.add(Box.createRigidArea(new Dimension(0, 20)));
+        painelConteudo.add(Box.createRigidArea(new Dimension(0, 10)));
 
+        // ==========
         JLabel linkVoltarLogin = new JLabel("Voltar para Login");
-        linkVoltarLogin.setForeground(Color.WHITE);
-        linkVoltarLogin.setFont(new Font("Arial", Font.BOLD, 14));
+        linkVoltarLogin.setForeground(new Color(170, 170, 170));
+        linkVoltarLogin.setFont(new Font("Arial", Font.ITALIC, 14));
         linkVoltarLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         linkVoltarLogin.addMouseListener(new MouseAdapter() {
@@ -138,21 +139,24 @@ public class TelaRegistro extends JFrame {
             @Override
             public void mouseEntered(MouseEvent e) {
                 linkVoltarLogin.setText("<html><u>Voltar para Login</u></html>");
+                linkVoltarLogin.setFont(new Font("Arial", Font.BOLD, 14));
                 linkVoltarLogin.setForeground(new Color(50, 150, 255));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 linkVoltarLogin.setText("Voltar para Login");
-                linkVoltarLogin.setForeground(Color.WHITE);
+                linkVoltarLogin.setFont(new Font("Arial", Font.ITALIC, 14));
+                linkVoltarLogin.setForeground(new Color(170, 170, 170));
             }
         });
 
         JPanel painelVoltar = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        painelVoltar.setBackground(Color.BLACK); // Fundo invisível
+        painelVoltar.setBackground(Color.BLACK);
         painelVoltar.setAlignmentX(Component.CENTER_ALIGNMENT);
         painelVoltar.add(linkVoltarLogin);
         painelConteudo.add(painelVoltar);
+        // ==========
 
         this.setVisible(true);
     }
