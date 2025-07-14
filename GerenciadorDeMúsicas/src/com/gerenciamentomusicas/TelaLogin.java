@@ -257,20 +257,21 @@ public class TelaLogin extends JFrame {
 
         textField.setText(placeholder);
         textField.setForeground(placeholderColor);
+        textField.setHorizontalAlignment(JTextField.LEFT);
 
         textField.addFocusListener(new FocusListener() {
-            @Override
             public void focusGained(FocusEvent e) {
                 if (textField.getText().equals(placeholder)) {
                     textField.setText("");
                     textField.setForeground(originalColor);
+                    textField.setHorizontalAlignment(JTextField.LEFT);
                 }
             }
-            @Override
             public void focusLost(FocusEvent e) {
                 if (textField.getText().isEmpty()) {
-                    textField.setText(placeholder);
                     textField.setForeground(placeholderColor);
+                    textField.setText(placeholder);
+                    textField.setHorizontalAlignment(JTextField.LEFT);
                 }
             }
         });
@@ -286,26 +287,25 @@ public class TelaLogin extends JFrame {
         Color placeholderColor = Color.GRAY;
         char defaultEchoChar = passwordField.getEchoChar();
 
-        // Estado inicial
         passwordField.setText(placeholder);
         passwordField.setForeground(placeholderColor);
         passwordField.setEchoChar((char) 0);
+        passwordField.setHorizontalAlignment(JTextField.LEFT);
 
         passwordField.addFocusListener(new FocusListener() {
-            @Override
             public void focusGained(FocusEvent e) {
                 if (new String(passwordField.getPassword()).equals(placeholder)) {
                     passwordField.setText("");
                     passwordField.setForeground(originalColor);
                     passwordField.setEchoChar(defaultEchoChar);
+                    passwordField.setHorizontalAlignment(JTextField.LEFT);
                 }
             }
-            @Override
             public void focusLost(FocusEvent e) {
                 if (new String(passwordField.getPassword()).isEmpty()) {
-                    passwordField.setForeground(placeholderColor);
+                    // ...
                     passwordField.setText(placeholder);
-                    passwordField.setEchoChar((char) 0);
+                    passwordField.setHorizontalAlignment(JTextField.LEFT);
                 }
             }
         });
