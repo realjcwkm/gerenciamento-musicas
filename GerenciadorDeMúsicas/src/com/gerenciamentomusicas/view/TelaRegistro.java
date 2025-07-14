@@ -30,6 +30,7 @@ import java.awt.event.FocusListener;
 
 // Importa a TelaLogin, pois TelaRegistro vai abri-la para voltar
 import com.gerenciamentomusicas.TelaLogin;
+import com.gerenciamentomusicas.util.ImageUtil;
 
 public class TelaRegistro extends JFrame {
     private JLabel labelIconeMusica;
@@ -64,12 +65,13 @@ public class TelaRegistro extends JFrame {
         painelCentralizado.add(painelConteudo, gbc);
         this.add(painelCentralizado, "Center");
 
-        // Carregar e configurar o ícone da nota musical
+        painelConteudo.add(Box.createRigidArea(new Dimension(0, 50)));
+
         URL musicalNoteUrl = getClass().getResource("/resources/images/musical_note.png"); //
         if (musicalNoteUrl != null) {
             ImageIcon originalIcon = new ImageIcon(musicalNoteUrl);
-            Image scaledImage = originalIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-            this.labelIconeMusica = new JLabel(new ImageIcon(scaledImage));
+            ImageIcon scaledIcon = ImageUtil.scaleImage(originalIcon, 100, 100); 
+            this.labelIconeMusica = new JLabel(scaledIcon);
         } else {
             this.labelIconeMusica = new JLabel("♫ (Imagem não encontrada)");
             System.err.println("Erro: Imagem musical_note.png não encontrada em /resources/images/");
