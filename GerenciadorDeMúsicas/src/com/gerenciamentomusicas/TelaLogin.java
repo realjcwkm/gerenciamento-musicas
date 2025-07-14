@@ -30,6 +30,7 @@ import java.awt.event.FocusListener;
 import com.gerenciamentomusicas.view.components.RoundJTextField;
 import com.gerenciamentomusicas.view.components.RoundJPasswordField;
 import com.gerenciamentomusicas.view.components.RoundJButton;
+import com.gerenciamentomusicas.util.ImageUtil;
 
 // Importa a TelaRegistro, pois TelaLogin vai abri-la
 import com.gerenciamentomusicas.view.TelaRegistro;
@@ -79,12 +80,11 @@ public class TelaLogin extends JFrame {
         painelCentralizado.add(painelConteudo, gbc);
         this.add(painelCentralizado, "Center");
 
-        // Carregar e configurar o ícone da nota musical
         URL musicalNoteUrl = getClass().getResource("/resources/images/musical_note.png"); //
         if (musicalNoteUrl != null) {
             ImageIcon originalIcon = new ImageIcon(musicalNoteUrl);
-            Image scaledImage = originalIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-            this.labelIconeMusica = new JLabel(new ImageIcon(scaledImage));
+            ImageIcon scaledIcon = ImageUtil.scaleImage(originalIcon, 100, 100); 
+            this.labelIconeMusica = new JLabel(scaledIcon);
         } else {
             this.labelIconeMusica = new JLabel("♫ (Imagem não encontrada)");
             System.err.println("Erro: Imagem musical_note.png não encontrada em /resources/images/");
@@ -201,7 +201,7 @@ public class TelaLogin extends JFrame {
         painelBotoesSociais.setMaximumSize(new Dimension(300, 40));
         painelBotoesSociais.setPreferredSize(new Dimension(300, 40));
 
-        URL facebookUrl = getClass().getResource("/resources/images/facebook.png"); //
+        URL facebookUrl = getClass().getResource("/resources/images/facebook.png");
         this.botaoFacebook = createSocialButton(facebookUrl, "f (Imagem não encontrada)");
         painelBotoesSociais.add(this.botaoFacebook);
 
@@ -232,17 +232,18 @@ public class TelaLogin extends JFrame {
         JButton button;
         if (imageUrl != null) {
             ImageIcon originalIcon = new ImageIcon(imageUrl);
-            Image scaledImage = originalIcon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-            button = new JButton(new ImageIcon(scaledImage));
+            ImageIcon scaledIcon = ImageUtil.scaleImage(originalIcon, 36, 36);
+            button = new JButton(scaledIcon);
         } else {
             button = new JButton(fallbackText);
-            System.err.println("Erro: Imagem social '" + fallbackText + "' não encontrada em /resources/images/");
+            System.err.println("Erro: Imagem social '" + fallbackText + "' não encontrada.");
         }
+
         button.setPreferredSize(new Dimension(40, 40));
         button.setBackground(new Color(60, 60, 60));
-        button.setForeground(Color.WHITE);
         button.setBorderPainted(false);
         button.setFocusPainted(false);
+
         return button;
     }
     
