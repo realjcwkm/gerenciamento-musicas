@@ -79,6 +79,8 @@ public class TelaLogin extends JFrame {
         gbc.fill = GridBagConstraints.BOTH;
         painelCentralizado.add(painelConteudo, gbc);
         this.add(painelCentralizado, "Center");
+        
+        painelConteudo.add(Box.createRigidArea(new Dimension(0, 50)));
 
         URL musicalNoteUrl = getClass().getResource("/resources/images/musical_note.png"); //
         if (musicalNoteUrl != null) {
@@ -144,7 +146,6 @@ public class TelaLogin extends JFrame {
 
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 35)));
         
-        // ===== INÍCIO DO CÓDIGO CORRIGIDO PARA ALINHAMENTO E HOVER =====
         JLabel textoNaoPossuiConta = new JLabel("Não possui uma conta?");
         textoNaoPossuiConta.setForeground(Color.WHITE);
         textoNaoPossuiConta.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -176,7 +177,16 @@ public class TelaLogin extends JFrame {
         painelRegistro.add(textoNaoPossuiConta);
         painelRegistro.add(linkRegistrar);
         painelConteudo.add(painelRegistro);
-        // ===== FIM DO CÓDIGO CORRIGIDO =====
+        
+        painelConteudo.add(Box.createRigidArea(new Dimension(0, 50)));
+
+        this.textoOu = new JLabel("ou");
+        this.textoOu.setForeground(Color.WHITE);
+        this.textoOu.setFont(new Font("Arial", Font.PLAIN, 14));
+        this.textoOu.setAlignmentX(Component.CENTER_ALIGNMENT);
+        painelConteudo.add(this.textoOu);
+
+        painelConteudo.add(Box.createRigidArea(new Dimension(0, 50)));
 
         JPanel painelBotoesSociais = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
         painelBotoesSociais.setBackground(Color.BLACK);
@@ -197,6 +207,8 @@ public class TelaLogin extends JFrame {
         painelBotoesSociais.add(this.botaoTwitter);
 
         painelConteudo.add(painelBotoesSociais);
+        
+        painelConteudo.add(Box.createRigidArea(new Dimension(0, 100)));
 
         this.setVisible(true);
     }
