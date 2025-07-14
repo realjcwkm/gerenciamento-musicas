@@ -118,17 +118,17 @@ public class TelaLogin extends JFrame {
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 20)));
         // --- CÓDIGO PARA ADICIONAR A LÓGICA DE LOGIN ---
         this.botaoLogin.addActionListener(e -> {
-            String email = campoUsuarioEmail.getText();
+            String login = campoUsuarioEmail.getText();
             String senha = new String(campoSenha.getPassword());
 
             // Validação simples
-            if (email.isEmpty() || senha.isEmpty()) {
+            if (login.isEmpty() || senha.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Por favor, preencha os campos de e-mail e senha.", "Campos Vazios", JOptionPane.WARNING_MESSAGE);
                 return;
             }
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             try {
-                Usuario usuarioAutenticado = usuarioDAO.autenticar(email, senha);
+                Usuario usuarioAutenticado = usuarioDAO.autenticar(login, senha);
 
                 if (usuarioAutenticado != null) {
                     JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo, " + usuarioAutenticado.getNome() + ".");
