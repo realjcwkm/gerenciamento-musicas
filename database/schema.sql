@@ -48,3 +48,25 @@ JOIN musicas m ON mp.musica_id = m.id
 JOIN playlists p ON mp.playlist_id = p.id
 JOIN usuarios u ON p.usuario_id = u.id
 ORDER BY u.nome, p.nome, mp.ordem;
+
+-- =====================================================
+-- Tabela e TRIGGER para Auditoria
+-- =====================================================
+
+-- Tabela para registrar logs de atividades no sistema.
+CREATE TABLE IF NOT EXISTS `auditoria` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `acao` VARCHAR(255) NOT NULL,
+  `data_hora` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- TRIGGER que dispara automaticamente APÓS a INSERÇÃO de uma nova música.
+DELIMITER $$
+CREATE TRIGGER `trigger_after_musica_insert`
+AFTER INSERT ON `musicas`
+FOR EACH ROW
+BEGIN
+    INSERT INTO auditoria (acao) 
+    VALUES (CONCAT('Nova música adicionada: ', NEW.titulo));
+END$$
+DELIMITER ;
