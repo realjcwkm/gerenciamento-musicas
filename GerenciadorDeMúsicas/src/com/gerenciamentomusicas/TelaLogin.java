@@ -278,34 +278,35 @@ public class TelaLogin extends JFrame {
     }
 
     /**
-     * Versão especial do addPlaceholder para JPasswordField, que lida com os caracteres de senha.
+     * Versão especial e corrigida do addPlaceholder para JPasswordField.
      * @param passwordField O campo de senha a ser modificado.
      * @param placeholder O texto de ajuda a ser exibido.
      */
     private void addPlaceholder(JPasswordField passwordField, String placeholder) {
-        Color originalColor = passwordField.getForeground();
-        Color placeholderColor = Color.GRAY;
-        char defaultEchoChar = passwordField.getEchoChar();
+        final Color originalColor = new Color(255, 255, 255);
+        final char defaultEchoChar = passwordField.getEchoChar();
 
         passwordField.setText(placeholder);
         passwordField.setForeground(placeholderColor);
-        passwordField.setEchoChar((char) 0);
         passwordField.setHorizontalAlignment(JTextField.LEFT);
+        passwordField.setEchoChar((char) 0);
 
         passwordField.addFocusListener(new FocusListener() {
+            @Override
             public void focusGained(FocusEvent e) {
                 if (new String(passwordField.getPassword()).equals(placeholder)) {
                     passwordField.setText("");
                     passwordField.setForeground(originalColor);
                     passwordField.setEchoChar(defaultEchoChar);
-                    passwordField.setHorizontalAlignment(JTextField.LEFT);
                 }
             }
+
+            @Override
             public void focusLost(FocusEvent e) {
                 if (new String(passwordField.getPassword()).isEmpty()) {
-                    // ...
+                    passwordField.setForeground(placeholderColor);
                     passwordField.setText(placeholder);
-                    passwordField.setHorizontalAlignment(JTextField.LEFT);
+                    passwordField.setEchoChar((char) 0);
                 }
             }
         });
