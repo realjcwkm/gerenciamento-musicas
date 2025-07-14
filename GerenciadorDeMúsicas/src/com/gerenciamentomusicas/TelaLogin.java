@@ -27,15 +27,18 @@ import model.Usuario;
 import javax.swing.JOptionPane;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import com.gerenciamentomusicas.view.components.RoundJTextField;
+import com.gerenciamentomusicas.view.components.RoundJPasswordField;
+import com.gerenciamentomusicas.view.components.RoundJButton;
 
 // Importa a TelaRegistro, pois TelaLogin vai abri-la
 import com.gerenciamentomusicas.view.TelaRegistro;
 
 public class TelaLogin extends JFrame {
     private JLabel labelIconeMusica;
-    private JTextField campoUsuarioEmail;
-    private JPasswordField campoSenha;
-    private JButton botaoLogin;
+    private RoundJTextField campoUsuarioEmail;
+    private RoundJPasswordField campoSenha;
+    private RoundJButton botaoLogin;
     private JLabel linkRecuperarSenha;
     private JLabel textoNaoPossuiConta;
     private JLabel linkRegistrar;
@@ -90,19 +93,19 @@ public class TelaLogin extends JFrame {
         painelConteudo.add(this.labelIconeMusica);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 60)));
 
-        this.campoUsuarioEmail = new JTextField();
+        this.campoUsuarioEmail = new RoundJTextField();
         setupTextField(this.campoUsuarioEmail);
         addPlaceholder(this.campoUsuarioEmail, "NOME DE USUÁRIO OU E-MAIL");
         painelConteudo.add(this.campoUsuarioEmail);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 15)));
 
-        this.campoSenha = new JPasswordField();
+        this.campoSenha = new RoundJPasswordField();
         setupTextField(this.campoSenha);
         addPlaceholder(this.campoSenha, "SENHA");
         painelConteudo.add(this.campoSenha);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 30)));
 
-        this.botaoLogin = new JButton("LOGIN");
+        this.botaoLogin = new RoundJButton("LOGIN");
         this.botaoLogin.setMaximumSize(new Dimension(300, 50));
         this.botaoLogin.setPreferredSize(new Dimension(300, 50));
         this.botaoLogin.setBackground(new Color(0, 102, 255));
