@@ -75,22 +75,26 @@ public class TelaRegistro extends JFrame {
         painelConteudo.add(this.labelIconeMusica);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 30)));
 
-        this.campoNomeUsuario = new JTextField("NOME DE USUÁRIO");
+        this.campoNomeUsuario = new JTextField();
+        addPlaceholder(this.campoNomeUsuario, "NOME DE USUÁRIO");
         setupTextField(this.campoNomeUsuario);
         painelConteudo.add(this.campoNomeUsuario);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 15)));
 
-        this.campoEmail = new JTextField("E-MAIL");
+        this.campoEmail = new JTextField();
+        addPlaceholder(this.campoEmail, "E-MAIL");
         setupTextField(this.campoEmail);
         painelConteudo.add(this.campoEmail);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 15)));
 
-        this.campoSenha = new JPasswordField("SENHA");
+        this.campoSenha = new JPasswordField();
+        addPlaceholder(this.campoSenha, "SENHA");
         setupTextField(this.campoSenha);
         painelConteudo.add(this.campoSenha);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 15)));
 
-        this.campoConfirmarSenha = new JPasswordField("CONFIRMAR SENHA");
+        this.campoConfirmarSenha = new JPasswordField();
+        addPlaceholder(this.campoConfirmarSenha, "CONFIRMAR SENHA");
         setupTextField(this.campoConfirmarSenha);
         painelConteudo.add(this.campoConfirmarSenha);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 25)));
