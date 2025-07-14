@@ -283,13 +283,14 @@ public class TelaLogin extends JFrame {
      * @param placeholder O texto de ajuda a ser exibido.
      */
     private void addPlaceholder(JPasswordField passwordField, String placeholder) {
-        final Color originalColor = new Color(255, 255, 255);
+        final Color originalColor = passwordField.getForeground();
+        final Color placeholderColor = Color.GRAY;
         final char defaultEchoChar = passwordField.getEchoChar();
 
         passwordField.setText(placeholder);
         passwordField.setForeground(placeholderColor);
-        passwordField.setHorizontalAlignment(JTextField.LEFT);
         passwordField.setEchoChar((char) 0);
+        passwordField.setHorizontalAlignment(JTextField.LEFT);
 
         passwordField.addFocusListener(new FocusListener() {
             @Override
@@ -298,15 +299,16 @@ public class TelaLogin extends JFrame {
                     passwordField.setText("");
                     passwordField.setForeground(originalColor);
                     passwordField.setEchoChar(defaultEchoChar);
+                    passwordField.setHorizontalAlignment(JTextField.LEFT);
                 }
             }
-
             @Override
             public void focusLost(FocusEvent e) {
                 if (new String(passwordField.getPassword()).isEmpty()) {
                     passwordField.setForeground(placeholderColor);
                     passwordField.setText(placeholder);
                     passwordField.setEchoChar((char) 0);
+                    passwordField.setHorizontalAlignment(JTextField.LEFT);
                 }
             }
         });
