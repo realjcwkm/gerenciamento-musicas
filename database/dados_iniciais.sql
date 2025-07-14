@@ -1,7 +1,8 @@
+-- Inserindo usuários de teste com senhas literais para fins acadêmicos
 INSERT INTO usuarios (nome, email, senha_hash) VALUES 
-('João Silva', 'joao.silva@email.com', '$2a$10$xFsTOfVV4q3uBNf2JYqR3eRplphjUfQ7Ue9L7jN1z1wC1bD1vYQOe'),
-('Maria Oliveira', 'maria.oliveira@email.com', '$2a$10$yH2eE3rT7uVNmKk5XwvZ8eRplphjUfQ7Ue9L7jN1z1wC1bD1vYQOe'),
-('Carlos Souza', 'carlos.souza@email.com', '$2a$10$zJ3fF4gV5hWmNl6YwXeY9eRplphjUfQ7Ue9L7jN1z1wC1bD1vYQOe');
+('João Silva', 'joao.silva@email.com', 'joao123'),
+('Maria Oliveira', 'maria.oliveira@email.com', 'maria123'),
+('Carlos Souza', 'carlos.souza@email.com', 'carlos123');
 
 INSERT INTO musicas (titulo, artista, duracao, genero, caminho_arquivo) VALUES 
 ('Bohemian Rhapsody', 'Queen', 354, 'Rock', '/musicas/queen_bohemian.mp3'),
