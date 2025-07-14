@@ -25,6 +25,8 @@ import javax.swing.SwingUtilities;
 
 // Importa a TelaLogin, pois TelaRegistro vai abri-la para voltar
 import com.gerenciamentomusicas.TelaLogin;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 public class TelaRegistro extends JFrame {
     private JLabel labelIconeMusica;
@@ -140,5 +142,74 @@ public class TelaRegistro extends JFrame {
         textField.setCaretColor(Color.WHITE);
         textField.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
         textField.setAlignmentX(Component.CENTER_ALIGNMENT);
+    }
+    
+    /**
+     * Adiciona um texto de placeholder a um JTextField.
+     * O texto some quando o campo ganha foco e reaparece se o campo ficar vazio.
+     * @param textField O campo de texto a ser modificado.
+     * @param placeholder O texto de ajuda a ser exibido.
+     */
+    private void addPlaceholder(JTextField textField, String placeholder) {
+        Color originalColor = textField.getForeground();
+        Color placeholderColor = Color.GRAY;
+
+        textField.setText(placeholder);
+        textField.setForeground(placeholderColor);
+        textField.setHorizontalAlignment(JTextField.LEFT);
+
+        textField.addFocusListener(new FocusListener() {
+            public void focusGained(FocusEvent e) {
+                if (textField.getText().equals(placeholder)) {
+                    textField.setText("");
+                    textField.setForeground(originalColor);
+                    textField.setHorizontalAlignment(JTextField.LEFT);
+                }
+            }
+            public void focusLost(FocusEvent e) {
+                if (textField.getText().isEmpty()) {
+                    textField.setForeground(placeholderColor);
+                    textField.setText(placeholder);
+                    textField.setHorizontalAlignment(JTextField.LEFT);
+                }
+            }
+        });
+    }
+
+    /**
+     * Versão especial e corrigida do addPlaceholder para JPasswordField.
+     * @param passwordField O campo de senha a ser modificado.
+     * @param placeholder O texto de ajuda a ser exibido.
+     */
+    private void addPlaceholder(JPasswordField passwordField, String placeholder) {
+        final Color originalColor = passwordField.getForeground();
+        final Color placeholderColor = Color.GRAY;
+        final char defaultEchoChar = passwordField.getEchoChar();
+
+        passwordField.setText(placeholder);
+        passwordField.setForeground(placeholderColor);
+        passwordField.setEchoChar((char) 0);
+        passwordField.setHorizontalAlignment(JTextField.LEFT);
+
+        passwordField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (new String(passwordField.getPassword()).equals(placeholder)) {
+                    passwordField.setText("");
+                    passwordField.setForeground(originalColor);
+                    passwordField.setEchoChar(defaultEchoChar);
+                    passwordField.setHorizontalAlignment(JTextField.LEFT);
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (new String(passwordField.getPassword()).isEmpty()) {
+                    passwordField.setForeground(placeholderColor);
+                    passwordField.setText(placeholder);
+                    passwordField.setEchoChar((char) 0);
+                    passwordField.setHorizontalAlignment(JTextField.LEFT);
+                }
+            }
+        });
     }
 }
