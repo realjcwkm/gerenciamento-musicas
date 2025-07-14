@@ -55,7 +55,14 @@ public class TelaLogin extends JFrame {
         JPanel painelConteudo = new JPanel();
         painelConteudo.setBackground(Color.BLACK);
         painelConteudo.setLayout(new BoxLayout(painelConteudo, BoxLayout.Y_AXIS));
-        painelConteudo.setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
+        painelConteudo.setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));  
+        painelConteudo.setFocusable(true); 
+        painelConteudo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                painelConteudo.requestFocusInWindow();
+            }
+        });
 
         JPanel painelCentralizado = new JPanel(new GridBagLayout());
         painelCentralizado.setBackground(new Color(230, 230, 230));
