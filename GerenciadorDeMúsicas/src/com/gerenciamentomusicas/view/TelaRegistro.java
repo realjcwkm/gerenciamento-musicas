@@ -88,26 +88,26 @@ public class TelaRegistro extends JFrame {
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 30)));
 
         this.campoNomeUsuario = new RoundJTextField();
-        addPlaceholder(this.campoNomeUsuario, "NOME DE USUÁRIO");
         setupTextField(this.campoNomeUsuario);
+        addPlaceholder(this.campoNomeUsuario, "NOME DE USUÁRIO");
         painelConteudo.add(this.campoNomeUsuario);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 15)));
 
         this.campoEmail = new RoundJTextField();
-        addPlaceholder(this.campoEmail, "E-MAIL");
         setupTextField(this.campoEmail);
+        addPlaceholder(this.campoEmail, "E-MAIL");
         painelConteudo.add(this.campoEmail);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 15)));
 
         this.campoSenha = new RoundJPasswordField();
-        addPlaceholder(this.campoSenha, "SENHA");
         setupTextField(this.campoSenha);
+        addPlaceholder(this.campoSenha, "SENHA");
         painelConteudo.add(this.campoSenha);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 15)));
 
         this.campoConfirmarSenha = new RoundJPasswordField();
-        addPlaceholder(this.campoConfirmarSenha, "CONFIRMAR SENHA");
         setupTextField(this.campoConfirmarSenha);
+        addPlaceholder(this.campoConfirmarSenha, "CONFIRMAR SENHA");
         painelConteudo.add(this.campoConfirmarSenha);
         painelConteudo.add(Box.createRigidArea(new Dimension(0, 25)));
 
