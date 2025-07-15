@@ -1,16 +1,15 @@
 # 🎵 Sistema de Gerenciamento de Músicas e Playlists
 
-## 📖 Descrição do Projeto
+## 📖 Sobre o Projeto
+Este projeto, desenvolvido para as disciplinas de *Linguagem de Programação Visual, Banco de Dados* e *Engenharia de Software*, é um sistema de desktop para gerenciamento de músicas.
 
-Este projeto foi desenvolvido como parte das disciplinas de *Linguagem de Programação Visual, **Banco de Dados* e *Engenharia de Software*. Ele permite que o usuário:
+Durante o desenvolvimento, a equipe explorou duas tecnologias de interface gráfica Java:
+* O módulo de **Autenticação (Login e Registro)** foi implementado em **Java Swing**, seguindo os requisitos originais da disciplina de LPV.
+* O **Dashboard Principal** e as telas de visualização foram implementados em **JavaFX** com FXML e CSS.
 
-- Gerencie músicas
-- Reproduza playlists
-- Reproduza áudios locais ou via link externo
-- Visualize estatísticas
----
+O objetivo é demonstrar competência em ambas as tecnologias, bem como na integração com banco de dados MySQL e na aplicação de boas práticas de engenharia de software.
 
-## 🛠 Tecnologias Utilizadas
+### 🛠️ Tecnologias Principais
 
 - Java JDK (versões 17 a 24)  
 - Java Swing / JavaFX (com SceneBuilder)  
@@ -29,40 +28,32 @@ Este projeto foi desenvolvido como parte das disciplinas de *Linguagem de Progra
 
 ---
 
-## 🚀 Como Executar a Versão Swing (NetBeans)
+## 🚀 Como Executar o Projeto
+Este projeto é composto por dois módulos que devem ser executados separadamente. Siga os passos abaixo para testar cada um.
 
-### ✅ Pré-requisitos
+### **Módulo 1: Autenticação (Desenvolvido em Java Swing)**
+*Este módulo permite testar as telas de Login e Registro, com interação completa com o banco de dados.*
 
-- NetBeans IDE  
-- XAMPP  
-- MySQL Connector/J (.jar)  
+**1. Pré-requisitos:**
+* NetBeans IDE instalado.
+* XAMPP com os serviços **Apache** e **MySQL** iniciados.
 
-### 🛠 Passos
+**2. Configuração do Banco de Dados:**
+* Acesse o `phpMyAdmin` e crie um banco de dados chamado **`playlistdb`**.
+* Execute os scripts `database/schema.sql` e `database/dados_iniciais.sql` para criar as tabelas e popular os dados.
 
-#### Banco de Dados
-
-1. Inicie o Apache e o MySQL no XAMPP  
-2. Acesse o *phpMyAdmin* e crie o banco playlistdb  
-3. Execute os arquivos SQL:
-
-database/schema.sql
-database/dados_iniciais.sql
-
-
-#### Projeto no NetBeans
-
-1. Abra o projeto via File > Open Project...  
-2. Adicione o *MySQL Connector/J* em Libraries > Add JAR/Folder  
-3. Verifique a classe Conexao.java (usuário padrão: root, senha: vazia)  
-
-#### Executar
-
-1. Clique com o botão direito > Clean and Build  
-2. Depois > Run
+**3. Execução no NetBeans:**
+* Abra o projeto principal no NetBeans (`File > Open Project...`).
+* Adicione o **MySQL Connector/J** à pasta `Libraries` do projeto.
+* Defina a classe principal do projeto como `com.gerenciamentomusicas.Main` (Clique com o botão direito no projeto > Properties > Run > Main Class).
+* Clique com o botão direito no projeto e escolha **"Run"**. A tela de Login deverá aparecer.
 
 ---
 
-## 💻 Como Executar a Versão JavaFX (via JAR)
+## **Módulo 2: Dashboard Principal (Desenvolvido em JavaFX)**
+*Esta é a interface principal do sistema desenvolvida pela equipe.*
+
+### 💻 Como Executar a Versão JavaFX (via JAR)
 
 Você pode baixar o .jar da versão final pelo botão abaixo:
 
