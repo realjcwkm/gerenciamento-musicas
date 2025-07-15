@@ -1,0 +1,60 @@
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-background-color: #000000;
+}
+
+.sidebar {
+    -fx-padding: 20;
+    -fx-background-color: #0a0a0a;
+}
+
+.menu-button {
+    -fx-text-fill: #007aff;
+    -fx-background-color: transparent;
+    -fx-font-size: 16px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.menu-button:selected, .menu-button:focused {
+    -fx-background-color: #333333;
+}
+
+.exit-button {
+    -fx-background-color: #dddddd;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+.title {
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.music-list {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.music-title {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.music-artist {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+
+.control-button {
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+}
+
+.favorite-button {
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-font-size: 18px;
+}

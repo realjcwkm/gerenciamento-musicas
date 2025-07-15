@@ -1,0 +1,83 @@
+.root {
+    -fx-background-color: #000000;
+}
+
+/* Títulos principais */
+.titulo {
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+/* Tempo total */
+.tempo {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+}
+
+/* Legendas abaixo das imagens */
+.legenda {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+/* Destaque de nomes */
+.destaque {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* Barras do gráfico */
+.bar {
+    -fx-fill: #007AFF;
+}
+
+/* Botões do menu lateral */
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Botões de período */
+.periodo-button {
+    -fx-background-color: #222;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+.periodo-button:selected {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+/* Label padrão */
+Label {
+    -fx-text-fill: white;
+}
+
+/* Container central */
+.container-central {
+    -fx-padding: 20;
+}
+
+.menu-item Label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.menu-item-active Label {
+    -fx-text-fill: #007AFF; /* Azul ativo */
+    -fx-font-size: 14px;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-cursor: hand;
+}
+
+.menu {
+    -fx-padding: 20;
+}
